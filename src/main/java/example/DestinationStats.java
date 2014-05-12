@@ -42,6 +42,12 @@ class DestinationStats {
         Queue replyTo = session.createTemporaryQueue();
 		MessageConsumer consumer = session.createConsumer(replyTo);
 
+		/* 
+		//  Problem with the the query using a "."
+		//  Issue tracked by https://issues.apache.org/jira/browse/AMQ-5165
+		//
+		*/
+		//String queueName = "ActiveMQ.Statistics.Destination." + dest;
 		String queueName = "ActiveMQ.Statistics.Destination" + dest;
 		System.out.println("Queue Set to: " + queueName);
 		Queue testQueue = session.createQueue(queueName);
